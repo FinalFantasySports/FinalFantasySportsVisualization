@@ -1,8 +1,7 @@
 <template>
   <el-table
       :data="tableData4"
-      style="width: 100%"
-      max-height="250">
+      style="width: 100%">
     <el-table-column
         fixed
         prop="date"

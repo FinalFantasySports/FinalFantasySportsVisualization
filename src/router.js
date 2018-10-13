@@ -14,6 +14,16 @@ export default new Router({
       component: Home
     },
     {
+      path: '/football',
+      name: 'football',
+      component: () => import(/* webpackChunkName: "about" */ './views/Football.vue')
+    },
+    {
+      path: '/baseball',
+      name: 'baseball',
+      component: () => import(/* webpackChunkName: "about" */ './views/Baseball.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
