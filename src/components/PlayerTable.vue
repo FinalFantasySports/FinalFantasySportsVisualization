@@ -64,12 +64,12 @@ export default {
   },
   mounted () {
     PlayerApi.getAllPlayers()
-        .then(res => {
-          this.players = res
-        })
-        .catch(err => {
-          console.error('Error in Football: ', err)
-        })
+      .then(res => {
+        this.players = res
+      })
+      .catch(err => {
+        console.error('Error in Football: ', err)
+      })
   }
 }
 </script>

@@ -45,6 +45,6 @@ export default {
   components: {
     PlayerTable,
     PlayerNav
-  },
+  }
 }
 </script>
