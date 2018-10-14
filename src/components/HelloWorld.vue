@@ -8,6 +8,7 @@
 export default {
   methods: {
     startHacking () {
+      this.$store.dispatch('players/getAllPlayers')
       this.$notify({
         title: 'It works!',
         type: 'success',
