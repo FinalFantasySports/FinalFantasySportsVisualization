@@ -1,5 +1,6 @@
 <template>
   <div class="ffs-player-table">
+    {{ players }}
   <!--<el-table-->
       <!--:data="tableData4"-->
       <!--style="width: 100%">-->
@@ -52,17 +53,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import PlayerApi from '../services/api/PlayerApi'
 
 export default {
   name: 'PlayerTable',
-  computed: mapState({
-    players: state => state.players.all
-  }),
-  created () {
-    this.$store.dispatch('players/getAllPlayers').then(playersDTO => {
-      this.players = playersDTO
-    })
+  data () {
+    return {
+      players: null
+    }
+  },
+  mounted () {
+    PlayerApi.getAllPlayers()
+        .then(res => {
+          this.players = res
+        })
+        .catch(err => {
+          console.error('Error in Football: ', err)
+        })
   }
 }
 </script>

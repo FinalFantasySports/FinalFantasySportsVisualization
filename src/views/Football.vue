@@ -9,8 +9,8 @@
     <!--</el-col>-->
     <!--<el-col :xs="16" :sm="18" :md="20" :lg="21" :xl="24">-->
     <!--<div class="grid-content bg-purple-light">-->
-    <HelloWorld />
-    <PlayerTable/>
+    <!--<HelloWorld />-->
+    <PlayerTable />
     <!--</div>-->
     <!--</el-col>-->
     <!--</el-row>-->
@@ -38,14 +38,13 @@
 
 <script>
 import PlayerNav from '../components/PlayerNav'
-import HelloWorld from '../components/HelloWorld'
 import PlayerTable from '../components/PlayerTable'
+
 export default {
   name: 'football',
   components: {
     PlayerTable,
-    PlayerNav,
-    HelloWorld
-  }
+    PlayerNav
+  },
 }
 </script>

@@ -5,10 +5,17 @@
 </template>
 
 <script>
+import PlayerApi from '../services/api/PlayerApi'
+
 export default {
+  name: 'HelloWorld',
+  props: {
+    players: Object
+  },
   methods: {
     startHacking () {
-      this.$store.dispatch('players/getAllPlayers')
+      this.props.players = PlayerApi.getAllPlayers()
+      console.log('Players: ', this.props.players)
       this.$notify({
         title: 'It works!',
         type: 'success',
