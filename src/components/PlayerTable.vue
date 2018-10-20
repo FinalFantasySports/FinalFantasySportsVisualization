@@ -1,114 +1,51 @@
 <template>
-  <el-table
-      :data="tableData4"
-      style="width: 100%">
-    <el-table-column
-        fixed
-        prop="date"
-        label="Date"
-        width="150">
-    </el-table-column>
-    <el-table-column
-        prop="name"
-        label="Name"
-        width="120">
-    </el-table-column>
-    <el-table-column
-        prop="state"
-        label="State"
-        width="120">
-    </el-table-column>
-    <el-table-column
-        prop="city"
-        label="City"
-        width="120">
-    </el-table-column>
-    <el-table-column
-        prop="address"
-        label="Address"
-        width="300">
-    </el-table-column>
-    <el-table-column
-        prop="zip"
-        label="Zip"
-        width="120">
-    </el-table-column>
-    <el-table-column
-        fixed="right"
-        label="Operations"
-        width="120">
-      <template slot-scope="scope">
-        <el-button
-            @click.native.prevent="deleteRow(scope.$index, tableData4)"
-            type="text"
-            size="small">
-          Remove
-        </el-button>
-      </template>
-    </el-table-column>
-  </el-table>
+  <div class="ffs-player-table">
+    <el-table
+        :data="tableData"
+        style="width: 100%">
+      <el-table-column
+          prop="name"
+          label="Name">
+      </el-table-column>
+      <el-table-column
+          prop="position"
+          label="Position">
+      </el-table-column>
+      <el-table-column
+          prop="teamAbbr"
+          label="Team">
+      </el-table-column>
+      <el-table-column
+          prop="fantasyPoints"
+          label="Fantasy Points">
+      </el-table-column>
+      <el-table-column
+          prop="valueBaseDraftScore"
+          label="Value Above Bench">
+      </el-table-column>
+    </el-table>
+  </div>
 </template>
 
 <script>
-export default {
-  methods: {
-    deleteRow (index, rows) {
-      rows.splice(index, 1)
-    }
-  },
-  data () {
-    return {
-      tableData4: [{
-        date: '2016-05-03',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036'
-      }, {
-        date: '2016-05-02',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036'
-      }, {
-        date: '2016-05-04',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036'
-      }, {
-        date: '2016-05-01',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036'
-      }, {
-        date: '2016-05-08',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036'
-      }, {
-        date: '2016-05-06',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036'
-      }, {
-        date: '2016-05-07',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036'
-      }]
+  import PlayerApi from '../services/api/PlayerApi'
+
+  export default {
+    name: "PlayerTable",
+    data () {
+      return {
+        tableData: []
+      }
+    },
+    beforeMount: function() {
+      PlayerApi.getAllPlayers()
+        .then(res => {
+          console.log('res: ', res)
+          this.tableData = res
+        })
+        .catch(err => {
+          console.error('Error in Football: ', err)
+        })
     }
   }
-}
 </script>

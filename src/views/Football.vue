@@ -1,18 +1,7 @@
 <template>
   <div class="football">
     <h3>Final Fantasy Football</h3>
-    <!--<el-row :gutter="10">-->
-    <!--<el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">-->
-    <!--<div class="grid-content bg-purple">-->
-    <!--<PlayerNav/>-->
-    <!--</div>-->
-    <!--</el-col>-->
-    <!--<el-col :xs="16" :sm="18" :md="20" :lg="21" :xl="24">-->
-    <!--<div class="grid-content bg-purple-light">-->
-    <PlayerTable/>
-    <!--</div>-->
-    <!--</el-col>-->
-    <!--</el-row>-->
+    <PlayerTable />
   </div>
 </template>
 
@@ -36,15 +25,12 @@
 </style>
 
 <script>
-  import PlayerNav from '../components/PlayerNav'
-  import HelloWorld from '../components/HelloWorld'
-  import PlayerTable from '../components/PlayerTable'
-  export default {
-    name: 'football',
-    components: {
-      PlayerTable,
-      PlayerNav,
-      HelloWorld
-    }
+import PlayerTable from '../components/PlayerTable'
+
+export default {
+  name: 'football',
+  components: {
+    PlayerTable
   }
+}
 </script>
