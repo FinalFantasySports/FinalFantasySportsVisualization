@@ -6,9 +6,9 @@
 </template>
 
 <script>
-export default {
-  name: 'Baseball'
-}
+  export default {
+    name: 'Baseball'
+  }
 </script>
 
 <style scoped>

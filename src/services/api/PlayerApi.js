@@ -11,11 +11,11 @@ const api = axios.create({
 export default {
   getAllPlayers () {
     return api.get('/players')
-      .then(res => {
-        console.log('API Response: ', res)
-        return res.data
-      }).catch(err => {
-        console.error('Error getting all players: ', err)
-      })
+        .then(res => {
+          console.log('API Response: ', res)
+          return res.data
+        }).catch(err => {
+          console.error('Error getting all players: ', err)
+        })
   }
 }

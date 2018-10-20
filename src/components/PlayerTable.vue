@@ -1,75 +1,56 @@
 <template>
   <div class="ffs-player-table">
-    {{ players }}
-  <!--<el-table-->
-      <!--:data="tableData4"-->
-      <!--style="width: 100%">-->
-    <!--<el-table-column-->
-        <!--fixed-->
-        <!--prop="date"-->
-        <!--label="Date"-->
-        <!--width="150">-->
-    <!--</el-table-column>-->
-    <!--<el-table-column-->
-        <!--prop="name"-->
-        <!--label="Name"-->
-        <!--width="120">-->
-    <!--</el-table-column>-->
-    <!--<el-table-column-->
-        <!--prop="state"-->
-        <!--label="State"-->
-        <!--width="120">-->
-    <!--</el-table-column>-->
-    <!--<el-table-column-->
-        <!--prop="city"-->
-        <!--label="City"-->
-        <!--width="120">-->
-    <!--</el-table-column>-->
-    <!--<el-table-column-->
-        <!--prop="address"-->
-        <!--label="Address"-->
-        <!--width="300">-->
-    <!--</el-table-column>-->
-    <!--<el-table-column-->
-        <!--prop="zip"-->
-        <!--label="Zip"-->
-        <!--width="120">-->
-    <!--</el-table-column>-->
-    <!--<el-table-column-->
-        <!--fixed="right"-->
-        <!--label="Operations"-->
-        <!--width="120">-->
-      <!--<template slot-scope="scope">-->
-        <!--<el-button-->
-            <!--@click.native.prevent="deleteRow(scope.$index, tableData4)"-->
-            <!--type="text"-->
-            <!--size="small">-->
-          <!--Remove-->
-        <!--</el-button>-->
-      <!--</template>-->
-    <!--</el-table-column>-->
-  <!--</el-table>-->
+
   </div>
 </template>
 
 <script>
-import PlayerApi from '../services/api/PlayerApi'
+  import PlayerApi from '../services/api/PlayerApi'
 
-export default {
-  name: 'PlayerTable',
-  data () {
-    return {
-      players: null
+  export default {
+    name: "PlayerTable",
+    data: () => ({
+      columns: [
+        { title: 'Name', field: 'name', sortable: true },
+        { title: 'Position', field: 'position', sortable: true  },
+        { title: 'Team', field: 'teamAbbr', sortable: true  },
+        { title: 'Return Yards', field: 'returnYds', sortable: true },
+        { title: 'Return TD\'s', field: 'returnTds', sortable: true  },
+        { title: 'Fantasy Points', field: 'fantasyPoints', sortable: true  },
+        { title: 'Value Above Replacement', field: 'valueBaseDraftScore', sortable: true  }
+
+      ],
+      data: [],
+      total: 0,
+      query: {}
+    }),
+    beforeMount: function() {
+      PlayerApi.getAllPlayers()
+        .then(res => {
+          console.log('res: ', res)
+          this.data = res
+        })
+        .catch(err => {
+          console.error('Error in Football: ', err)
+        })
     }
-  },
-  mounted () {
-    PlayerApi.getAllPlayers()
-      .then(res => {
-        this.players = res
-      })
-      .catch(err => {
-        console.error('Error in Football: ', err)
-      })
   }
-}
+
+  // export default {
+  //   name: 'PlayerTable',
+  //   data () {
+  //     return {
+  //       players: null
+  //     }
+  //   },
+  //   mounted () {
+  //     PlayerApi.getAllPlayers()
+  //         .then(res => {
+  //           this.players = res
+  //         })
+  //         .catch(err => {
+  //           console.error('Error in Football: ', err)
+  //         })
+  //   }
+  // }
 </script>
