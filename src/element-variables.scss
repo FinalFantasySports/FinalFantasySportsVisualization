@@ -9,3 +9,8 @@ $--color-primary: teal;
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
 @import "~element-ui/packages/theme-chalk/src/index";
+
+$--color-white: #fff !default;
+$--color-black: #000 !default;
+
+$--color-primary: #ffb86c !default;
